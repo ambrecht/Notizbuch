@@ -1,11 +1,30 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useSupabase } from '@/supabase/supabase-provider';
+import Writter from '../components/writter';
+import Login from '../components/login';
+import UserList from '@/components/UserList';
+import Logout from '@/components/logout';
+import NoteList from '@/components/notesList';
+import { SearchComponent } from '@/components/searchNotes';
+import RealtimeChanges from '@/components/realTiem';
+
 export default function Home() {
+  const { supabase, session } = useSupabase();
+
+  if (!session) {
+    return <Login />;
+  }
+
   return (
-    //a Tailwind Heromessage
-
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      Dit is en Notizbuch wa! Unjewär wie dit wat se mir dazumal jeklaut ham.{' '}
+      <Writter />
+      <NoteList />
+      <SearchComponent />
+      <UserList />
+      <Logout />
+      <RealtimeChanges />
     </div>
-
-    //a nice Tailwind CSS button
   );
 }

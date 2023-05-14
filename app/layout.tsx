@@ -1,10 +1,10 @@
 'server-only';
 
-import SupabaseListener from '../components/supabase-listener';
-import SupabaseProvider from '../components/supabase-provider';
+import SupabaseListener from '../supabase/supabase-listener';
+import SupabaseProvider from '../supabase/supabase-provider';
 
 import './globals.css';
-import { createServerClient } from '../utils/supabase-server';
+import { createServerClient } from '../supabase/supabase-server';
 
 import type { Database } from '../db_types';
 import type { SupabaseClient } from '@supabase/auth-helpers-nextjs';
