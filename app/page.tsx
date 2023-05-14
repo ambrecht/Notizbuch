@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useSupabase } from '@/supabase/supabase-provider';
 import Writter from '../components/writter';
 import Login from '../components/login';
@@ -8,7 +7,6 @@ import UserList from '@/components/UserList';
 import Logout from '@/components/logout';
 import NoteList from '@/components/notesList';
 import { SearchComponent } from '@/components/searchNotes';
-import RealtimeChanges from '@/components/realTiem';
 
 export default function Home() {
   const { supabase, session } = useSupabase();
@@ -24,7 +22,6 @@ export default function Home() {
       <SearchComponent />
       <UserList />
       <Logout />
-      <RealtimeChanges />
     </div>
   );
 }
