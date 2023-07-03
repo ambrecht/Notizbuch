@@ -4,7 +4,7 @@ const NoteList = () => {
   const { notes } = useSupabase();
 
   return (
-    <div className="max-w-md mx-auto">
+    <div className="max-w-xl mx-auto">
       <h2 className="text-xl font-bold mb-4">Notizen</h2>
       <ol className="list-decimal space-y-2">
         {notes

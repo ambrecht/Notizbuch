@@ -1,8 +1,8 @@
-'server-only';
+// Dateiname: RootLayout.js
 
 import SupabaseListener from '../supabase/supabase-listener';
 import SupabaseProvider from '../supabase/supabase-provider';
-
+import Navigation from '../components/navigation';
 import './globals.css';
 import { createServerClient } from '../supabase/supabase-server';
 
@@ -32,12 +32,15 @@ export default async function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
-        <SupabaseProvider session={session}>
-          <SupabaseListener serverAccessToken={session?.access_token} />
+      <body className="flex flex-col min-h-screen">
+        <Navigation></Navigation>
+        <div className="flex-grow flex items-center justify-center">
+          <SupabaseProvider session={session}>
+            <SupabaseListener serverAccessToken={session?.access_token} />
 
-          {children}
-        </SupabaseProvider>
+            {children}
+          </SupabaseProvider>
+        </div>
         <footer className="flex items-center justify-center w-full h-24 border-t">
           Icke bin hier unten wa! Allet findet auf mir über mir staat
         </footer>
