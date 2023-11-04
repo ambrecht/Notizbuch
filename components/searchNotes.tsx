@@ -1,3 +1,4 @@
+'use client';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useSupabase } from '../supabase/supabase-provider';
 

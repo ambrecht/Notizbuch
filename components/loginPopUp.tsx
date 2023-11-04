@@ -1,15 +1,24 @@
 import { useState } from 'react';
+import { useSupabase } from '../supabase/supabase-provider';
+import { useRouter } from 'next/navigation';
 
-type LoginPopupProps = {
-  onLogin: (email: string, password: string) => void;
-};
-
-export default function LoginPopup({ onLogin }: LoginPopupProps) {
+export default function LoginPopup() {
+  const { supabase } = useSupabase();
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    onLogin(email, password);
+  const handleLogin = async () => {
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) throw error;
+      router.push('/');
+    } catch (error) {
+      console.log('Error signing in:');
+    }
   };
 
   return (

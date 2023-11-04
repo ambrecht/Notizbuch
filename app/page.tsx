@@ -1,22 +1,21 @@
 'use client';
 
-import { useSupabase } from '@/supabase/supabase-provider';
-import Writter from '../components/writter';
-import Login from '../components/login';
-import UserList from '@/components/UserList';
-import Logout from '@/components/logout';
+import { useSupabase } from '../supabase/supabase-provider';
+import { useRouter as useNextRouter } from 'next/navigation';
+import Logout from '../components/logout';
 
-export default function Home() {
-  const { supabase, session } = useSupabase();
+const HomePage = () => {
+  const router = useNextRouter();
+  const { session } = useSupabase();
 
-  if (!session) {
-    return <Login />;
-  }
-
+  // Hier kannst du den eigentlichen Inhalt der Startseite rendern
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <UserList />
-      <Logout />
+    <div>
+      <h1>Willkommen auf der Startseite!</h1>
+      <Logout></Logout>
+      {/* Füge hier den Rest deines Seiteninhalts hinzu */}
     </div>
   );
-}
+};
+
+export default HomePage;

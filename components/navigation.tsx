@@ -26,7 +26,7 @@ export default function NavigationButton() {
           </button>
         </Link>
         <Link href="/lesen">
-          <button className="px-4 py-2 bg-black text-white font-semibold rounded-lg shadow-md hover:bg-gray-700">
+          <button className="px-4 py-2 bg-black text-white font-semibold rounded-lg shadow-md hover:bg-gray-700:">
             Lesen
           </button>
         </Link>

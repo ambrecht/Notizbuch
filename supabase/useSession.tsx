@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useSupabase } from './supabase-provider';
-import { useRenderCount } from '@/utils/useRenderCount';
 
 export type Session = /*unresolved*/ any;
 export type RealtimeChannel = /*unresolved*/ any;
@@ -18,7 +17,6 @@ export interface SupashipUserInfo {
 }
 
 export function useSession() {
-  const renderCount = useRenderCount();
   const { supabase, session } = useSupabase();
   const [userInfo, setUserInfo] = useState<SupashipUserInfo>({
     profile: null,
@@ -86,8 +84,6 @@ export function useSession() {
       setChannel(null);
     }
   }, [userInfo.session]);
-
-  console.log('useSession', renderCount);
 
   return userInfo;
 }

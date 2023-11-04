@@ -1,3 +1,5 @@
+'use client';
+
 import { useSupabase } from '@/supabase/supabase-provider';
 
 export default function Logout() {

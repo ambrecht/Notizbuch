@@ -1,14 +1,14 @@
 import { useSupabase } from '../supabase/supabase-provider';
 
 const NoteList = () => {
-  const { notes } = useSupabase();
+  const { notes }: { notes: Array<any> } = useSupabase();
 
   return (
-    <div className="max-w-xl mx-auto">
+    <div className="max-w-md mx-auto p-4">
       <h2 className="text-xl font-bold mb-4">Notizen</h2>
-      <ol className="list-decimal space-y-2">
+      <ol className="list-none">
         {notes
-          .reverse()
+          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
           .map(
             (note: {
               id: string;
@@ -16,14 +16,12 @@ const NoteList = () => {
               created_at: string;
               word_count: number;
             }) => (
-              <li key={note.id} className="border-b py-2">
-                <p className="text-lg">{note.content}</p>
-                <p className="text-gray-500 text-sm">
-                  Erstellt am: {new Date(note.created_at).toLocaleString()}
-                </p>
-                <p className="text-gray-500 text-sm">
-                  Wortzahl: {note.word_count}
-                </p>
+              <li key={note.id} className="border-b py-4">
+                <p className="text-base">{note.content}</p>
+                <div className="flex justify-between text-xs text-gray-500">
+                  <span>{new Date(note.created_at).toLocaleString()}</span>
+                  <span>Wortzahl: {note.word_count}</span>
+                </div>
               </li>
             ),
           )}

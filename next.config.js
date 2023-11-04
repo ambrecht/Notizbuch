@@ -8,4 +8,7 @@ module.exports = {
     MY_VARIABLE: process.env.TESTPASSWORD,
     // Füge hier weitere Umgebungsvariablen hinzu, die du verwenden möchtest
   },
+  images: {
+    domains: ['ahnxapepaznocyrjauzn.supabase.co'],
+  },
 };
